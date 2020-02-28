@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:restauran_app/routes.dart';
 import 'package:restauran_app/src/pages/home/index_home.dart';
+import 'package:restauran_app/src/pages/inventario/inventario_index.dart';
  
 void main() => runApp(MyApp());
  
@@ -11,7 +12,9 @@ class MyApp extends StatelessWidget {
       title: 'Material App',
       // home: ,
       initialRoute: '/',
-      routes: getApplicationRoutes(),
+      routes: {
+        '/': (context) => Inventario(), 
+      },
       onGenerateRoute: (setings){
         return MaterialPageRoute(
           builder: (BuildContext context) => Home()
