@@ -1,0 +1,12 @@
+{
+    "admin":[
+        {"title":"inventario","route":"inventario", "URL":"https://adventech-soluciones.com/wp-content/uploads/2019/05/inventario-icono-png.png"},
+        {"title":"Registrar Meseros","route":"signUpAdmin", "URL":"https://cdn1.iconfinder.com/data/icons/users-vol-2/32/user-man-enter-login-signup-512.png"},
+        {"title":"Dinero Total","route":"totalMoney", "URL":"https://i.dlpng.com/static/png/6859105_preview.png"}
+    ],
+    "mesero":[
+        {"title":"Mesas","route":"mesa", "URL":"https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQZsakAxtGa5oQONKOWacchdGGyGr2suVWm-U0qbG7lciLcX0o7"},
+        {"title":"Generar Cuenta","route":"makeCuenta","URL":"https://transparencia.info.jalisco.gob.mx/sites/default/files/u149/iconoestadodecuentas.png"},
+        {"title":"Menu","route":"menu","URL":"https://previews.123rf.com/images/faysalfarhan/faysalfarhan1604/faysalfarhan160400670/55094243-men%C3%BA-icono-plato-de-comida-bot%C3%B3n-marr%C3%B3n-cuadrado.jpg"}
+    ]
+}
