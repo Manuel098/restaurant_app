@@ -43,38 +43,72 @@ class _InventarioState extends State<Inventario> {
             return showDialog(
               context: context,
               builder: (context){
-                return AlertDialog(
-                  title: Text('Add Products'),
-                  content: ListView(
-                    scrollDirection: Axis.vertical,
-                    children: <Widget>[
-                      TextField(
-                        controller: textController, 
-                        decoration: InputDecoration(
-                          hintText: 'Product´s name'
-                        ),                                     
-                      ),
-                      TextField(
-                        controller: quantityController, 
-                        decoration: InputDecoration(
-                          hintText: 'Quantity'
-                        ),                                     
-                      )
-                    ],
-                  ),
-                  
-                  actions: <Widget>[
-                    MaterialButton(
-                      elevation: 5.0,
-                      child: Text('Cancel'),
-                      onPressed: (){}
+                return Card(
+                  elevation: 10,
+                  margin: EdgeInsets.only(top: 150, bottom: 250, left: 30, right: 30),
+                  child: Container(
+                    padding: EdgeInsets.all(15),
+                    child: ListView(
+                    //padding: EdgeInsets.only(top: 15, bottom: 15),
+                      scrollDirection: Axis.vertical,
+                      children: <Widget>[                      
+                        TextField(
+                          controller: textController, 
+                          decoration: InputDecoration(
+                            hintText: 'Product´s name'
+                          ),                                     
+                        ),
+                        TextField(
+                          controller: quantityController, 
+                          decoration: InputDecoration(
+                            hintText: 'Quantity'
+                          ),                                     
+                        ),
+                        SizedBox(height: 50,),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                          children: <Widget>[
+                            InkWell(
+                              child: Container(
+                                height: 30,
+                                width: 80,
+                                alignment: Alignment.center,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15),
+                                  color: Colors.red
+                                ),
+                                child: Text('Cancel', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
+                              ),
+                              onTap: (){
+                                print('Item agregado!');
+                                Navigator.pop(context);
+                              },
+                            ),
+                            InkWell(
+                              child: Container(
+                                alignment: Alignment.center,
+                                height: 30,
+                                width: 80,
+                                //color: Colors.blue,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15),
+                                  color: Colors.blue
+                                ),
+                                child: Text('Submit', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),),
+                              ),
+                              onTap: (){
+                                print('Cancelado!');
+                                Navigator.pop(context);
+                              },
+                            ),
+                            
+                          ],
+                        )
+                      ],
                     ),
-                    MaterialButton(
-                      elevation: 5.0,
-                      child: Text('Sumbmit'),
-                      onPressed: (){}
-                    )
-                  ],
+                  )                               
                 );
               }
             );
@@ -126,7 +160,9 @@ class _InventarioState extends State<Inventario> {
           Center(
             child: InkWell(
                 child:Icon(Icons.delete),
-                onTap: (){},
+                onTap: (){
+                  print('Producto Borrado!');
+                },
               ),
           ),
           showEditIcon: true
