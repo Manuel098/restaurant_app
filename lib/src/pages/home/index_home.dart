@@ -11,27 +11,22 @@ class Home extends StatelessWidget {
     );
   }
 
-  Widget _list() {
-    return FutureBuilder(
-      future: myMenuProv.cargarData(permission: 'admin'),
-      initialData: [],
-      builder: (context, AsyncSnapshot<List <dynamic>> snapshot) => 
-        ListView(children: _listItems(lista : snapshot.data, context:context),)
-    );
-  }
+  Widget _list() => FutureBuilder(
+    future: myMenuProv.cargarData(permission: 'asd'),
+    initialData: [],
+    builder: (context, AsyncSnapshot<List <dynamic>> snapshot) => 
+      ListView(children: _listItems(lista : snapshot.data, context:context),)
+  );
 
   List<Widget> _listItems({List<dynamic> lista, BuildContext context}) {
     List<Widget> menuList = List<Widget>();
     
     menuList.add(SizedBox(height: 70,));
-    // print(lista);
     for (var item in lista) {
-      print(item);
       menuList..add(_card(image: item['URL'], route: '/${item['route']}', title: item['title'],context: context))..add(SizedBox(height: 35,));
     }  
     return menuList;
   }
-
 
   ListTile _card({String title, String image, BuildContext context ,String route})=>ListTile(
     title: Card(elevation: 8,

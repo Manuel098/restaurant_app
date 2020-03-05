@@ -1,6 +1,6 @@
 {
     "admin":[
-        {"title":"inventario","route":"inventario", "URL":"https://adventech-soluciones.com/wp-content/uploads/2019/05/inventario-icono-png.png"},
+        {"title":"inventario","route":"invent", "URL":"https://adventech-soluciones.com/wp-content/uploads/2019/05/inventario-icono-png.png"},
         {"title":"Registrar Meseros","route":"signUpAdmin", "URL":"https://cdn1.iconfinder.com/data/icons/users-vol-2/32/user-man-enter-login-signup-512.png"},
         {"title":"Dinero Total","route":"totalMoney", "URL":"https://i.dlpng.com/static/png/6859105_preview.png"}
     ],
