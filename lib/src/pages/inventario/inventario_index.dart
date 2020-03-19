@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:math';
 
 class Inventario extends StatefulWidget {
   Inventario({Key key, this.title}) : super(key: key);
