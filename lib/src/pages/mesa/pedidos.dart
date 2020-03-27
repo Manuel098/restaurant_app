@@ -155,4 +155,35 @@ class _PedidosState extends State<Pedidos> {
     ),
     SizedBox(height: 20,),
   ];
+
+  void _alertMesas({List data, BuildContext cont}){
+    showDialog(context: cont, builder: (cont){
+      List<Row> mesas = List<Row>();
+      for (var item in data) {
+        mesas.add(Row(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Text('Mesa ${item['num']}'),
+            ButtonBar(children: <Widget>[
+              RaisedButton(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)), onPressed: (){},child: Icon(Icons.navigate_next, color: Colors.white70,),color: Colors.green,elevation: 22, disabledColor: Colors.green,),
+              RaisedButton(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)), onPressed: (){},child: Icon(Icons.cancel, color: Colors.white70,),color: Colors.red,elevation: 22,)
+            ],),
+          ],
+        ));
+      }
+
+      return AlertDialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        title: Text('Mesas'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: mesas
+        ),
+        actions: <Widget>[
+          FlatButton(onPressed: (){}, child: Text('Continuar')),
+          FlatButton(onPressed: ()=>Navigator.of(cont).pop(), child: Text('Salir')),
+        ],
+      );
+    });
+  }
 }
