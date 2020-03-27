@@ -3,11 +3,12 @@ import 'package:flappy_search_bar/search_bar_style.dart';
 import 'package:flutter/material.dart';
 
 
-class Post {
-  final String title;
-  final String description;
+class MenuItem {
+  final String name, url;
+  final double cost;
+  final int categoryId;
 
-  Post(this.title, this.description);
+  MenuItem(this.name, this.url, this.cost, this.categoryId);
 }
 
 class Menu extends StatelessWidget {
@@ -17,40 +18,61 @@ class Menu extends StatelessWidget {
   Widget build(BuildContext context) {
     
     return Scaffold(
-      appBar: AppBar(title: Text('Menu page'),),
+      appBar: AppBar(title: Text('Menu'),),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: SearchBar<Post>(
+          child: SearchBar<MenuItem>(
             onSearch: search,
-            onItemFound: (Post post, int index){
-              return ListTile(
-                title: Text(post.title),
-                subtitle: Text(post.description),
-              );
+            onItemFound: (MenuItem post, int index){
+              return _cardMenu(name: post.name, id: post.url);
             },
             icon: Icon(Icons.search),
             searchBarStyle: SearchBarStyle(
-              borderRadius: BorderRadius.circular(10)
+              borderRadius: BorderRadius.circular(100)
             ),
           ),
-          )
-          
-        ),
+        )),
     );
   }
 }
 
 
+_cardMenu({String name, String id})=>Card(
+    margin: EdgeInsets.only(left:50, right: 50, bottom: 40, top: 10),
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+    elevation: 10,
+    child: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        Icon(Icons.perm_contact_calendar,size: 300, color: Colors.black26,),
+        Text(name,style: TextStyle(
+          fontSize: 25,
+          fontWeight: FontWeight.bold),
+        ),
+        Row(
+          children: <Widget>[
+            Text(id,style: TextStyle(
+              fontSize: 25,
+              fontWeight: FontWeight.bold
+            ),),
+            SizedBox(height: 100,),
+          ],
+          mainAxisSize: MainAxisSize.min,
+        )
+      ],
+    ),
+  );
 
 
-
-Future<List<Post>> search(String search) async {
+Future<List<MenuItem>> search(String name) async {
   await Future.delayed(Duration(seconds: 1));
-  return List.generate(search.length, (int index) {
-    return Post(
-      "Title : $search $index",
-      "Description :$search $index",
+  return List.generate(name.length, (int index) {
+    return MenuItem(
+      name,
+      name,
+      12.0,
+      1
     );
   });
 }

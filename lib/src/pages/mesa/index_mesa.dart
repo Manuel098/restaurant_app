@@ -41,7 +41,7 @@ class Mesa extends StatelessWidget {
   }
 
   _cardUser({String name, String id})=>Card(
-    margin: EdgeInsets.only(left:50, right: 50),
+    margin: EdgeInsets.only(left:10, right: 10),
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
     elevation: 15,
     child: Column(
@@ -76,8 +76,8 @@ class Mesa extends StatelessWidget {
           children: <Widget>[
             Text('Mesa ${item['num']}'),
             ButtonBar(children: <Widget>[
-              RaisedButton(onPressed: (){},child: Icon(Icons.navigate_next, color: Colors.white70,),color: Colors.green,elevation: 12, disabledColor: Colors.green,),
-              RaisedButton(onPressed: (){},child: Icon(Icons.cancel, color: Colors.white70,),color: Colors.red,elevation: 12,)
+              RaisedButton(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)), onPressed: (){},child: Icon(Icons.navigate_next, color: Colors.white70,),color: Colors.green,elevation: 22, disabledColor: Colors.green,),
+              RaisedButton(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)), onPressed: (){},child: Icon(Icons.cancel, color: Colors.white70,),color: Colors.red,elevation: 22,)
             ],),
           ],
         ));

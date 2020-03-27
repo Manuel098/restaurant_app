@@ -23,4 +23,5 @@ flutter:
   assets:
     - assets/loading.gif
     - data/home.json
+    - data/menu.json
   

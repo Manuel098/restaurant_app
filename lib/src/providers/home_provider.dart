@@ -12,8 +12,7 @@ class _HomeProvider{
     List<dynamic> list =List<dynamic>();
     Map dataMap = json.decode(response);
     
-    List<dynamic> admin = dataMap['admin'];
-    List<dynamic> mesero = dataMap['mesero'];
+    final List<dynamic> admin = dataMap['admin'], mesero = dataMap['mesero'];
 
     permission == 'admin'?list = admin: list = mesero;
     return list;

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:restauran_app/src/pages/home/popUp.dart';
 import 'package:restauran_app/src/providers/home_provider.dart';
 
 class Home extends StatelessWidget {
@@ -7,7 +8,19 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _list()
+      appBar: AppBar(
+        actions: <Widget>[
+          FloatingActionButton(
+            elevation: 20,
+            onPressed: ()=> shouAlert(cont: context),
+            child: CircleAvatar(
+              backgroundColor: Colors.black54,
+              child: Icon(Icons.perm_contact_calendar, size: 45,),radius: 100,
+            ),
+          ),
+        ],
+      ),
+      body: _list(),
     );
   }
 
@@ -21,7 +34,7 @@ class Home extends StatelessWidget {
   List<Widget> _listItems({List<dynamic> lista, BuildContext context}) {
     List<Widget> menuList = List<Widget>();
     
-    menuList.add(SizedBox(height: 70,));
+    menuList.add(SizedBox(height: 30,));
     for (var item in lista) {
       menuList..add(_card(image: item['URL'], route: '/${item['route']}', title: item['title'],context: context))..add(SizedBox(height: 35,));
     }  
