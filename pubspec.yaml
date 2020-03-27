@@ -24,4 +24,5 @@ flutter:
     - assets/loading.gif
     - data/home.json
     - data/menu.json
+    - data/mesa.json
   

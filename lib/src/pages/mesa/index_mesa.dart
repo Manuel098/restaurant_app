@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:restauran_app/src/pages/mesa/pedidos.dart';
+import 'package:restauran_app/src/providers/mesa_provider.dart';
 
 class Mesa extends StatelessWidget {
   const Mesa({Key key}) : super(key: key);
@@ -6,66 +8,35 @@ class Mesa extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Mesa Page'),),
-      body: Center(
-        child: ListView(
-          children: <Widget>[
-            SizedBox(height: 60,),
-            ListTile(
-              title: _cardUser(name: 'Jose Manuel Valdez Gonzalez',id: '1'),
-              onTap: ()=>_alertMesas(cont: context,data: [
-                {'num':'1'},{'num':'2'},{'num':'3'},{'num':'3'},{'num':'3'},{'num':'3'}
-              ]),
-            ),
-            SizedBox(height: 45,),
-            ListTile(
-              title: _cardUser(name: 'David Alejandro Rueda Rivas',id: '2'),
-              onTap: ()=>_alertMesas(cont: context,data: [
-                {'num':'1'},{'num':'2'},{'num':'3'},{'num':'3'}
-              ]),
-            ),
-            SizedBox(height: 45,),
-            ListTile(
-              title: _cardUser(name: 'Christian Antonio Avila Saucedo',id: '4'),
-              onTap: ()=>_alertMesas(cont: context,data: [
-                {'num':'3'},{'num':'3'},{'num':'3'}
-              ]),
-            ),
-            SizedBox(height: 45,),
-            _cardUser(name: 'Ernesto',id: '3'),
-            SizedBox(height: 45,),
-          ],
+      appBar: AppBar(title: Text('Mesas'),),
+      body: FutureBuilder(
+        future: myMesaProv.cargarData(),
+        initialData: [],
+        builder: (context, AsyncSnapshot<List <dynamic>> snapshot) => Center(
+          child: ListView(
+            children: newBody(context:context, data:snapshot.data),
+          ),
         )
       )
     );
   }
 
-  _cardUser({String name, String id})=>Card(
-    margin: EdgeInsets.only(left:10, right: 10),
-    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-    elevation: 15,
-    child: Column(
-      mainAxisSize: MainAxisSize.min,
-      children: <Widget>[
-        Icon(Icons.perm_contact_calendar,size: 300, color: Colors.black26,),
-        Row(
-          children: <Widget>[
-            Container(child: Text(name,style: TextStyle(
-              fontSize: 25,
-              fontWeight: FontWeight.bold),
-            ),width: 200,),
-            SizedBox(width: 20,),
-            Text(id,style: TextStyle(
-              fontSize: 25,
-              fontWeight: FontWeight.bold
-            ),),
-            SizedBox(height: 100,),
-          ],
-          mainAxisSize: MainAxisSize.min,
-        )
-      ],
-    ),
-  );
+  List <Widget> newBody({BuildContext context, List<dynamic> data}){
+    List <Widget> response = [
+      SizedBox(height: 30)
+    ];
+    for (var item in data) {
+      response..add(
+        ListTile(
+          title: Pedidos(getOcupped: true,id: item['id'].toString(), name:item['mesero']['nombre'], platillos: item['platillos'],),
+          onTap: ()=>_alertMesas(cont: context,data: [
+            {'num':'1'},{'num':'2'},{'num':'3'},{'num':'3'},{'num':'3'},{'num':'3'}
+          ]),
+        ),
+      )..add(SizedBox(height: 45,));
+    }
+    return response;
+  }
 
   void _alertMesas({List data, BuildContext cont}){
     showDialog(context: cont, builder: (cont){

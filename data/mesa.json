@@ -1,0 +1,86 @@
+
+{"data":[
+    {
+        "id": 1,
+        "mesero_id": 1,
+        "mesa_id": 5,
+        "created_at": "2020-03-03 14:07:03",
+        "updated_at": "2020-03-03 14:07:03",
+        "deleted_at": null,
+        "platillos": [],
+        "mesero": {
+            "id": 1,
+            "nombre": "Sed et eum.",
+            "number": "1-855-306-5681",
+            "created_at": "2020-03-03 14:07:03",
+            "updated_at": "2020-03-03 14:07:03",
+            "deleted_at": null
+        }
+    },
+    {
+        "id": 2,
+        "mesero_id": 1,
+        "mesa_id": 6,
+        "created_at": "2020-03-03 14:07:03",
+        "updated_at": "2020-03-03 14:07:03",
+        "deleted_at": null,
+        "platillos": [
+            {
+                "id": 1,
+                "tipo": "Ut nam omnis.",
+                "nombre": "Voluptatem.",
+                "precio": "Eius quaerat.",
+                "platillo_id": 3,
+                "mesa_id": 6,
+                "created_at": "2020-03-03 14:07:03",
+                "updated_at": "2020-03-03 14:07:03",
+                "deleted_at": null,
+                "info_platillo": [
+                    {
+                        "id": 3,
+                        "nombre": "Aut debitis.",
+                        "tipo": "Dolorum.",
+                        "precio": 420,
+                        "URL": "http://www.hdfondos.eu/pictures/2015/0531/1/falitas-mexicano-comidas-pics-170839.jpg",
+                        "categoria_id": 5,
+                        "created_at": "2020-03-03 14:07:03",
+                        "updated_at": "2020-03-03 14:07:03",
+                        "deleted_at": null
+                    }
+                ]
+            },
+            {
+                "id": 5,
+                "tipo": "Rerum sunt.",
+                "nombre": "Corrupti quis.",
+                "precio": "Molestias sit.",
+                "platillo_id": 5,
+                "mesa_id": 6,
+                "created_at": "2020-03-03 14:07:03",
+                "updated_at": "2020-03-03 14:07:03",
+                "deleted_at": null,
+                "info_platillo": [
+                    {
+                        "id": 5,
+                        "nombre": "Laboriosam.",
+                        "tipo": "Sunt est.",
+                        "precio": 192,
+                        "URL": "https://imagenescityexpress.scdn6.secure.raxcdn.com/sites/default/files/inline-images/comida-mexicana-patrimonio-humanidad.jpg",
+                        "categoria_id": 3,
+                        "created_at": "2020-03-03 14:07:03",
+                        "updated_at": "2020-03-03 14:07:03",
+                        "deleted_at": null
+                    }
+                ]
+            }
+        ],
+        "mesero": {
+            "id": 1,
+            "nombre": "Sed et eum.",
+            "number": "1-855-306-5681",
+            "created_at": "2020-03-03 14:07:03",
+            "updated_at": "2020-03-03 14:07:03",
+            "deleted_at": null
+        }
+    }
+]}
