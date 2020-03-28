@@ -11,9 +11,6 @@ class Mesa extends StatelessWidget {
       appBar: AppBar(title: Text('Mesas'),),
       body: FutureBuilder(
         future: myMesaProv.cargarData(),
-        // initialData: [
-        //   Image(image: AssetImage('assets/loading.gif'), )
-        // ],
         builder: (context, AsyncSnapshot<List <dynamic>> snapshot) => snapshot.data!=null?
           Center(
           child: ListView(
