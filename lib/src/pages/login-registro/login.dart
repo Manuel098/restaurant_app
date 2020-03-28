@@ -1,42 +1,25 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Login',
-      theme: ThemeData(
- 
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Login'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
+class LoginPage extends StatefulWidget {
+  LoginPage({Key key, this.title}) : super(key: key);
 
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _LoginPageState createState() => _LoginPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _LoginPageState extends State<LoginPage> {
   TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
-
+  String password = '', user = '';
   @override
   Widget build(BuildContext context) {
-
-
     final emailField = TextField(
       obscureText: false,
       style: style,
+      onChanged: (value){
+        user = value;
+      },
       decoration: InputDecoration(
           contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
           hintText: "Usuario",
@@ -47,6 +30,9 @@ class _MyHomePageState extends State<MyHomePage> {
     final passwordField = TextField(
       obscureText: true,
       style: style,
+      onChanged: (value){
+        password= value;
+      },
       decoration: InputDecoration(
           contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
           hintText: "Contraseña",
@@ -61,7 +47,18 @@ class _MyHomePageState extends State<MyHomePage> {
       child: MaterialButton(
         minWidth: MediaQuery.of(context).size.width,
         padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-        onPressed: () {},
+        onPressed: () {
+          if (password=='admin'&&user=='admin'){
+            password='';
+            user='';
+            Navigator.pushNamed(context, '/index',arguments: 'admin');
+          }
+          else{
+            password='';
+            user='';
+            Navigator.pushNamed(context, '/index',arguments: 'asd');
+          }
+        },
         child: Text("Ingresar",
             textAlign: TextAlign.center,
             style: style.copyWith(
@@ -70,8 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
 
     return Scaffold(
-        body: SingleChildScrollView(
-      child: Center(
+      body:  Center(
         child: Container(
           color: Colors.white,
           child: Padding(
@@ -103,6 +99,6 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
       ),
-    ));
+    );
   }
 }

@@ -23,6 +23,7 @@ flutter:
 
   assets:
     - assets/loading.gif
+    - assets/lobster.png
     - data/home.json
     - data/menu.json
     - data/mesa.json

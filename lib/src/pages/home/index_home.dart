@@ -4,7 +4,7 @@ import 'package:restauran_app/src/providers/home_provider.dart';
 
 class Home extends StatelessWidget {
   const Home({Key key}) : super(key: key);
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,16 +20,18 @@ class Home extends StatelessWidget {
           ),
         ],
       ),
-      body: _list(),
+      body: _list(context:context),
     );
   }
 
-  Widget _list() => FutureBuilder(
-    future: myMenuProv.cargarData(permission: 'admin'),
-    initialData: [],
-    builder: (context, AsyncSnapshot<List <dynamic>> snapshot) => 
-      ListView(children: _listItems(lista : snapshot.data, context:context),)
-  );
+  Widget _list({BuildContext context}) {
+    final String valid= ModalRoute.of(context).settings.arguments;
+    return FutureBuilder(
+      future: myMenuProv.cargarData(permission: valid),
+      initialData: [],
+      builder: (context, AsyncSnapshot<List <dynamic>> snapshot) => 
+        ListView(children: _listItems(lista : snapshot.data, context:context),)
+    );}
 
   List<Widget> _listItems({List<dynamic> lista, BuildContext context}) {
     List<Widget> menuList = List<Widget>();
