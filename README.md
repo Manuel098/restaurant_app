@@ -1,7 +1,7 @@
 [![INSERT YOUR GRAPHIC HERE](https://api.ed.team/public-files/blogposters/adf20107-e40c-4083-940d-e75ae1d95352.png)]()
 
 
-# restauran_app
+# restaurant_app
 
 [![Build Status](http://img.shields.io/travis/badges/badgerbadgerbadger.svg?style=flat-square)](https://travis-ci.org/badges/badgerbadgerbadger)  [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org) 
 
