@@ -6,7 +6,7 @@
     ],
     "mesero":[
         {"title":"Mesas","route":"mesa", "URL":"https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQZsakAxtGa5oQONKOWacchdGGyGr2suVWm-U0qbG7lciLcX0o7"},
-        {"title":"Generar Cuenta","route":"makeCuenta","URL":"https://transparencia.info.jalisco.gob.mx/sites/default/files/u149/iconoestadodecuentas.png"},
+        {"title":"Generar Cuenta","route":"ticket","URL":"https://transparencia.info.jalisco.gob.mx/sites/default/files/u149/iconoestadodecuentas.png"},
         {"title":"Menu","route":"menu","URL":"https://previews.123rf.com/images/faysalfarhan/faysalfarhan1604/faysalfarhan160400670/55094243-men%C3%BA-icono-plato-de-comida-bot%C3%B3n-marr%C3%B3n-cuadrado.jpg"}
     ]
 }
