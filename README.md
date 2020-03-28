@@ -10,7 +10,6 @@ La app consiste en modulos para agregar elementos a un inventario, agregar mesas
 
 ## Desarrolladores ✒️
 
-_Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios_
 
 * **Christian Avila** - *Front-End* - *Documentacion*
 * **David Rueda** - *Front-End* - *Documentacion*
