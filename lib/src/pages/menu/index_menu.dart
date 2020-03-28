@@ -1,79 +1,62 @@
-import 'package:flappy_search_bar/flappy_search_bar.dart';
-import 'package:flappy_search_bar/search_bar_style.dart';
 import 'package:flutter/material.dart';
+import 'package:restauran_app/src/providers/menu_provider.dart';
 
-
-class MenuItem {
-  final String name, url;
-  final double cost;
-  final int categoryId;
-
-  MenuItem(this.name, this.url, this.cost, this.categoryId);
-}
-
-class Menu extends StatelessWidget {
-  const Menu({Key key}) : super(key: key);
+class Menu extends StatefulWidget {
+  Menu({Key key}) : super(key: key);
 
   @override
+  _MenuState createState() => _MenuState();
+}
+
+class _MenuState extends State<Menu> {
+  @override
   Widget build(BuildContext context) {
-    
-    return Scaffold(
+    return  Scaffold(
       appBar: AppBar(title: Text('Menu'),),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: SearchBar<MenuItem>(
-            onSearch: search,
-            onItemFound: (MenuItem post, int index){
-              return _cardMenu(name: post.name, id: post.url);
-            },
-            icon: Icon(Icons.search),
-            searchBarStyle: SearchBarStyle(
-              borderRadius: BorderRadius.circular(100)
+      body: FutureBuilder(
+        future: myMenuProv.cargarData(),
+        initialData: [],
+        builder: (BuildContext context, AsyncSnapshot snapshot) =>
+          snapshot.data!=null?_cardsMenu(data: snapshot.data):Image(image: AssetImage('assets/loading.gif'))
+      ),
+    );
+  }
+
+  ListView _cardsMenu({List<dynamic> data}) {
+    List<Widget> content=[];
+    
+    if (data!=null&&data.length>0) {
+      for (var item in data) {
+        content.add(ListTile(title: Center(child: Text(item['nombre'],style: TextStyle(fontSize: 35, fontWeight: FontWeight.w900, color: Colors.lightBlueAccent),))));
+        for (var plat in item['info_platillo']) {
+          content.add(ListTile(
+            title: Card(
+              elevation: 15,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+              child: Column(
+                children: <Widget>[
+                  SizedBox(height: 10),
+                  Center(child: Text(plat['nombre'], style: TextStyle( fontSize: 25),),),
+                  FadeInImage(
+                    placeholder: AssetImage('assets/loading.gif'), 
+                    image: NetworkImage(plat['URL']),
+                    fadeInDuration: Duration(seconds: 1),
+                    height: 150,
+                    fit: BoxFit.cover,),
+                  SizedBox(height: 10),
+                  Center(child: Text('Precio \$ ${plat['precio']}', style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20),),),
+                  SizedBox(height: 10),
+                ],
+                mainAxisSize: MainAxisSize.min,
+              ),
+              margin: EdgeInsets.only(left:20, right:20, bottom: 10),
             ),
-          ),
-        )),
+          ));
+        }
+      } 
+    }
+    return ListView(
+      children: content
     );
   }
 }
-
-
-_cardMenu({String name, String id})=>Card(
-    margin: EdgeInsets.only(left:50, right: 50, bottom: 40, top: 10),
-    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-    elevation: 10,
-    child: Column(
-      mainAxisSize: MainAxisSize.min,
-      children: <Widget>[
-        Icon(Icons.perm_contact_calendar,size: 300, color: Colors.black26,),
-        Text(name,style: TextStyle(
-          fontSize: 25,
-          fontWeight: FontWeight.bold),
-        ),
-        Row(
-          children: <Widget>[
-            Text(id,style: TextStyle(
-              fontSize: 25,
-              fontWeight: FontWeight.bold
-            ),),
-            SizedBox(height: 100,),
-          ],
-          mainAxisSize: MainAxisSize.min,
-        )
-      ],
-    ),
-  );
-
-
-Future<List<MenuItem>> search(String name) async {
-  await Future.delayed(Duration(seconds: 1));
-  return List.generate(name.length, (int index) {
-    return MenuItem(
-      name,
-      name,
-      12.0,
-      1
-    );
-  });
-}
-
