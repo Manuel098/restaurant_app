@@ -25,7 +25,7 @@ class Home extends StatelessWidget {
   }
 
   Widget _list() => FutureBuilder(
-    future: myMenuProv.cargarData(permission: 'sdx'),
+    future: myMenuProv.cargarData(permission: 'admin'),
     initialData: [],
     builder: (context, AsyncSnapshot<List <dynamic>> snapshot) => 
       ListView(children: _listItems(lista : snapshot.data, context:context),)
