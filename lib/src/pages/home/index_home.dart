@@ -9,6 +9,7 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         actions: <Widget>[
           FloatingActionButton(
             elevation: 20,
